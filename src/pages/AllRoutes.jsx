@@ -8,8 +8,8 @@ import Home from "./home";
 import About from "./about";
 import Payments from "./payments";
 import Plans from "./plans";
-import Login from "./login";
-
+import Form from "./login/login";
+import SignUp from "./register";
 
 const AllRoutes = () => {
     return (
@@ -20,8 +20,8 @@ const AllRoutes = () => {
             <Route path='/payments' element={<Payments />} > </Route>
             <Route path='/plans' element={<Plans />} > </Route>
             <Route path='/about' element={<About />} > </Route>
-            <Route path='/login' element={<Login />} > </Route>
-
+            <Route path='/login' element={<Form />} > </Route>
+            <Route path='/register' element={<SignUp />} > </Route>
            </Routes>
         </div>
     )
