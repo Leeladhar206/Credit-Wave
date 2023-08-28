@@ -19,6 +19,8 @@ import {
 import { FaYoutube, FaHandshake, FaShieldAlt } from "react-icons/fa";
 import { useAuth } from "../components/Authorization/authdetails";
 
+import { useState, useEffect } from "react";
+
 import { getUserFromLocalStorage } from "./login/localstorage";
 
 import "@fontsource/poppins";
@@ -64,9 +66,15 @@ function Home() {
 
   const { isAuthenticated} = useAuth();
 
+  const [name, setName]= useState("")
+
   const ans= getUserFromLocalStorage()
 
-  const name= ans[ans.length-1].username
+  if(ans.length>0){
+    setName(ans[ans.length-1].username)
+  }
+
+  console.log(name)
 
   return (
     <Box m={20}>
