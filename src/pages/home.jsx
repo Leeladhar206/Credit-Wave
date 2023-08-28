@@ -64,27 +64,10 @@ function Home() {
     },
   ];
 
-  const { isAuthenticated} = useAuth();
-
-  const [name, setName]= useState("")
-
-  const ans= getUserFromLocalStorage()
-
-  if(ans.length>0){
-    setName(ans[ans.length-1].username)
-  }
-
-  console.log(name)
+  const { isAuthenticated } = useAuth();
 
   return (
     <Box m={20}>
-
-      {
-        isAuthenticated ? <Text fontSize={"3xl"} fontWeight={600} textAlign={"center"}
-        mt={-10} mb={10}
-        >Welcome back, {name} ! </Text> : null
-      }
-
       <Flex
         fontFamily="Poppins, sans-serif"
         fontSize="md"
@@ -117,7 +100,7 @@ function Home() {
           </Button>
         </Box>
 
-        <Box mr={-6} display={{ base: "none", md: "block" }} >
+        <Box mr={-6} display={{ base: "none", md: "block" }}>
           <Image
             src="https://i.ibb.co/pfXTcX5/Screenshot-2023-08-25-151059.png"
             alt="credit-card"
