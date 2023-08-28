@@ -12,12 +12,14 @@ import {
   AccordionPanel,
   AccordionIcon,
   Icon,
-  Heading,
   Spacer,
   Divider,
 } from "@chakra-ui/react";
 
 import { FaYoutube, FaHandshake, FaShieldAlt } from "react-icons/fa";
+import { useAuth } from "../components/Authorization/authdetails";
+
+import { getUserFromLocalStorage } from "./login/localstorage";
 
 import "@fontsource/poppins";
 
@@ -60,8 +62,21 @@ function Home() {
     },
   ];
 
+  const { isAuthenticated} = useAuth();
+
+  const ans= getUserFromLocalStorage()
+
+  const name= ans[ans.length-1].username
+
   return (
     <Box m={20}>
+
+      {
+        isAuthenticated ? <Text fontSize={"3xl"} fontWeight={600} textAlign={"center"}
+        mt={-10} mb={10}
+        >Welcome back, {name} ! </Text> : null
+      }
+
       <Flex
         fontFamily="Poppins, sans-serif"
         fontSize="md"
@@ -94,7 +109,7 @@ function Home() {
           </Button>
         </Box>
 
-        <Box mr={-6}>
+        <Box mr={-6} display={{ base: "none", md: "block" }} >
           <Image
             src="https://i.ibb.co/pfXTcX5/Screenshot-2023-08-25-151059.png"
             alt="credit-card"

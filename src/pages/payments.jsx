@@ -106,6 +106,7 @@ const PaymentCard = ({ title, amount, description }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <Text fontSize="sm" color="gray.500" mt={4}>10 credit points are added for this payment</Text>
           </ModalBody>
 
           <ModalFooter>
@@ -139,14 +140,14 @@ const Payments = () => {
       amount: 15000,
     },
     {
+      title: "Biryani Ordered",
+      description: "Payment for the food ordered from the Swiggy",
+      amount: 399,
+    },
+    {
       title: "Internet Bill",
       description: "Payment for the high-speed internet service",
       amount: 1200,
-    },
-    {
-      title: "Grocery Shopping",
-      description: "Payment for the groceries purchased from the Swiggy",
-      amount: 1500,
     },
 
     {

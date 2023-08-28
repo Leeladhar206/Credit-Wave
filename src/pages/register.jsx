@@ -7,7 +7,6 @@ import {
   FormControl,
   Button,
   Box,
-  Flex,
   FormLabel,
 } from "@chakra-ui/react";
 import { saveUserToLocalStorage } from "./login/localstorage";
