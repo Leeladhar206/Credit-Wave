@@ -1,14 +1,43 @@
-import React from "react";
-import { Box, Flex, Spacer, Image, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Spacer,
+  Image,
+  Heading,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 
 import { Link as ChakraLink } from "@chakra-ui/react";
 
 import { Link as ReactRouter } from "react-router-dom";
 
-import "@fontsource/poppins"
+import { useAuth } from "../Authorization/authdetails";
 
+import { useNavigate } from "react-router-dom";
+
+import "@fontsource/poppins";
 
 const Navbar = () => {
+  const { isAuthenticated, userLogout } = useAuth();
+
+  const navigate = useNavigate();
+
+  const toast = useToast();
+
+  const handleLogout = () => {
+    toast({
+      title: "Logout Successfully",
+      description: "User redirected to Home page.",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+    });
+
+    userLogout();
+    navigate("/");
+  };
+
   return (
     <Flex
       as="nav"
@@ -20,6 +49,7 @@ const Navbar = () => {
       zIndex="100"
       bg="white"
       fontFamily="Poppins, sans-serif"
+      boxShadow={"sm"}
     >
       <Box display="flex" alignItems="flex-end">
         <Box w="50px" h="50px" borderRadius="50%" overflow="hidden">
@@ -44,25 +74,28 @@ const Navbar = () => {
         <ChakraLink as={ReactRouter} to="/" mr={8}>
           Home
         </ChakraLink>
-        <ChakraLink as={ReactRouter} to="/payments" mr={8}>
-          Payments
-        </ChakraLink>
         <ChakraLink as={ReactRouter} to="/plans" mr={8}>
           Plans
+        </ChakraLink>
+        <ChakraLink as={ReactRouter} to="/payments" mr={8}>
+          Payments
         </ChakraLink>
         <ChakraLink as={ReactRouter} to="/about" mr={8}>
           About
         </ChakraLink>
-        <ChakraLink as={ReactRouter} to="/login" mr={8}>
-          Login
-        </ChakraLink>
       </Box>
 
       <Spacer />
-      <Box as="button" borderRadius="md" bg="black" color="white" px={4} h={8}>
-       <ChakraLink as={ReactRouter} to="/register" mr={8}>
-          Register
-        </ChakraLink>
+      <Box textAlign={"center"} bg="black" color="white" p="3" w={100}>
+        {isAuthenticated ? (
+          <Text onClick={handleLogout} cursor={"pointer"}>
+            Logout
+          </Text>
+        ) : (
+          <ChakraLink as={ReactRouter} to="/login">
+            Login
+          </ChakraLink>
+        )}
       </Box>
     </Flex>
   );

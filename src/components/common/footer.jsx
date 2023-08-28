@@ -4,12 +4,17 @@ import { Box, Flex, Text, chakra, Icon } from "@chakra-ui/react";
 
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
-import "@fontsource/poppins"
-
+import "@fontsource/poppins";
 
 const Footer = () => {
   return (
-    <Box as="footer" fontFamily="Poppins, sans-serif" bg="black" color="white" py={4}>
+    <Box
+      as="footer"
+      fontFamily="Poppins, sans-serif"
+      bg="black"
+      color="white"
+      py={4}
+    >
       <Flex direction="column" align="center">
         <Flex mt={4} mb={6} align="center">
           <Icon as={FaFacebook} boxSize={6} mx={2} cursor="pointer" />
