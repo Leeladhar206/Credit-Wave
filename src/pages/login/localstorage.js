@@ -1,4 +1,4 @@
-// utils/localStorageUtils.js
+
 
 const USER_KEY = 'user';
 
@@ -7,6 +7,6 @@ export function saveUserToLocalStorage(user) {
 }
 
 export function getUserFromLocalStorage() {
-  const userString = localStorage.getItem(USER_KEY);
-  return userString ? JSON.parse(userString) : null;
+  const userData = localStorage.getItem(USER_KEY);
+  return userData ? JSON.parse(userData) : [];
 }

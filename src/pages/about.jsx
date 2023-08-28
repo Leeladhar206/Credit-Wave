@@ -1,7 +1,12 @@
-import React from 'react';
+import { Box, Button, Flex, Image, Spacer, Text } from "@chakra-ui/react";
 
-function About() {
-  return <div>About Page</div>;
+const About = () => {
+    return (
+        
+            <Box>
+                About page
+            </Box>
+    );
 }
 
-export default About;
+export default About
